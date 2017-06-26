@@ -1,0 +1,28 @@
+{
+  "name": "slack-webhooks",
+  "version": "0.0.1",
+  "description": "I do cool stuff with Slack.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "express": "^4.15.3",
+    "body-parser": "^1.17.2",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1"
+  },
+  "engines": {
+    "node": "8.1.x"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/welcome-project"
+  },
+  "license": "UNLICENSED",
+  "keywords": [
+    "slack",
+    "webhooks",
+    "integration"
+  ]
+}
