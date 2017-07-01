@@ -1,0 +1,4 @@
+language: javascript
+ notifications:
+    slack: ${process.env.TRAVISCIPD}#github
+    slack: ${process.env.TRAVISCIPD}#travis-ci

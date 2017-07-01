@@ -46,10 +46,10 @@ function setSlackMsgAttachments(fallback, color, title, title_link, text, fields
       "mrkdwn": true,
       "mrkdwn_in": ["text", "pretext"],
       "fields": fields,
-      // "image_url": "https://cdn.glitch.com/387e0080-9d47-4636-b843-71fdcd8c3c0b%2Frobinhood-108.jpg?1498375652071",
-      "thumb_url": "https://cdn.glitch.com/387e0080-9d47-4636-b843-71fdcd8c3c0b%2Frobinhood-108.jpg?1498375652071",
+      //"image_url": "https://cdn.glitch.com/387e0080-9d47-4636-b843-71fdcd8c3c0b%2Frobinhood-108.jpg?1498375652071",
+      //"thumb_url": "https://cdn.glitch.com/387e0080-9d47-4636-b843-71fdcd8c3c0b%2Frobinhood-108.jpg?1498375652071",
       "footer": "Lynyx Dev",
-      "footer_icon": "https://platform.slack-edge.com/img/default_application_icon.png",
+      "footer_icon": "https://cdn.glitch.com/387e0080-9d47-4636-b843-71fdcd8c3c0b%2Flynyx-dev.ico?1498532589111",
       "ts": date
     }
   ];
@@ -89,12 +89,14 @@ app.post("/", function(req, res, next) {
     console.log(req.body);
   var incoming = req.body;
   if (incoming.token !== '6AfoM3UNJYo5Lwy3i33xJWXS') {
-      console.log("[INCOMING] REQUEST: Slack token mismatch!");
+      //console.log("[INCOMING] REQUEST");
+      //console.log(req);
+      console.log("[INCOMING] REQUEST: Slack token mismatch! IP: " + req.ip);
     res.status(403).send("Forbidden; request logged.");
   } else {
     res.format({
-      'application/json': function() {
-        res.status(200).send({ response_type: "ephemeral", text: "Robinhood request received, querying API..." });
+      json: function() {
+        res.status(200).json({ response_type: "ephemeral", text: "Robinhood request received, querying API..." });
       }
     });
       console.log("[INCOMING] REQUEST: Verified Slack request.");
@@ -154,12 +156,14 @@ app.post("/", function(req, res, next) {
           case "detail":
             // Fetch detail for given symbol
               console.log("[ROHO] INCOMING REQUEST: Handling Detail Task...");
-            res.status(200).send();
             break;
           case "fundamentals":
             // Fetch fundamentals for given symbol
               console.log("[ROHO] INCOMING REQUEST: Handling Fundamentals Task...");
-            res.status(200).send();
+            var text = 'The fundamentals task is coming soon, but not yet ready.';
+            var attachments = [{}];
+            var options = formatSlackMsg(incoming.response_url, attachments, "ephemeral", text);
+            return rp(options);
             break;
           default:
             // Catch unrecognized tasks and return error
