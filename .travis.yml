@@ -3,5 +3,5 @@ node_js:
   - "node"
 notifications:
   slack: ${process.env.TRAVISCIPD}
-    on_success: "always"
-    on_failure: "always"
+  on_success: always
+  on_failure: always
