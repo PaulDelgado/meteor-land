@@ -3,6 +3,8 @@ node_js:
   - "node"
 notifications:
   slack: 
+    on_success: always
+    on_failure: always
     rooms: 
       - ${process.env.TRAVISCIPD}#github
       - ${process.env.TRAVISCIPD}#travis-ci
