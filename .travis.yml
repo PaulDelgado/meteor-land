@@ -2,6 +2,6 @@ language: node_js
 node_js:
   - "node"
 notifications:
-  slack: '${process.env.TRAVISCIPD}'
+  slack: "${process.env.TRAVISCIPD}"
     on_success: always
     on_failure: always
