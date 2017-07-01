@@ -1,12 +1,8 @@
-language: javascript
+language: node_js
+node_js:
+  - "node"
 notifications:
   slack: 
     rooms: 
       - ${process.env.TRAVISCIPD}#github
       - ${process.env.TRAVISCIPD}#travis-ci
-addons:
-  apt:
-    packages:
-      - nodejs
-script:
-  - ant test
