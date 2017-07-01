@@ -88,7 +88,7 @@ app.post("/", function(req, res, next) {
     console.log("[INCOMING] REQUEST: " + Object.getOwnPropertyNames(req));
     console.log(req.body);
   var incoming = req.body;
-  if (incoming.token !== '6AfoM3UNJYo5Lwy3i33xJWXS') {
+  if (incoming.token !== process.env.SLACKINCOMINGTOKEN) {
       //console.log("[INCOMING] REQUEST");
       //console.log(req);
       console.log("[INCOMING] REQUEST: Slack token mismatch! IP: " + req.ip);
